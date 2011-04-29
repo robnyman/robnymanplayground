@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Alternative placeholder behavior and fallback - Robert Nyman</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+	<style>
+	    input {
+	        display: block;
+	        margin: 0 5px 20px;
+	    }
+	    
+	    form input[data-placeholder] {
+          color: #aaa;
+        }
+
+        form input[data-placeholder].active {
+          color: #000;
+        }    
+	</style>
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Alternative placeholder behavior and fallback <a href="../index.html">back to playground</a></h1>
+			<p>Mimicking the native placeholder behavior in iOS, i.e. not replacing placeholder text until the user actually starts typing.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				<h2>Placeholder demo</h2>
+				
+				<form action="index.html" novalidate>
+                    <input type="text" name="first-name" data-placeholder="Enter first name">
+                    <input type="text" name="last-name" data-placeholder="Enter last name">
+                    <input type="tel"  name="phone-no"data-placeholder="What is your phone no?">
+                    <input type="email" name="email-address" data-placeholder="Enter your e-mail address">
+                    <input type="text" name="user-pwd" data-type="password" data-placeholder="Choose a password">
+                    <input type="text" name="user-pwd-repeat" data-type="password" data-placeholder="Repeat password">
+                          
+                    <input type="submit" value="Send to myself">
+                </form>
+				
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<script>
+        var dataPlaceholders = document.querySelectorAll("input[data-placeholder]"),
+            l = dataPlaceholders.length,
+            
+            // Set caret at the beginning of the input
+            setCaret = function (evt) {
+                if (this.value === this.getAttribute("data-placeholder")) {
+                  this.setSelectionRange(0, 0);
+                  evt.preventDefault();
+                  evt.stopPropagation();
+                  return false;
+                }
+            },
+            
+            // Clear placeholder value at user input
+            clearPlaceholder = function (evt) {
+                if (evt.keyCode !== 9) {
+                  if (this.value === this.getAttribute("data-placeholder")) {
+                    this.value = "";
+                    this.className = "active";
+                    if (this.getAttribute("data-type") === "password") {
+                      this.type = "password";
+                    }
+                  }
+                } 
+            },
+        
+            restorePlaceHolder = function () {
+                if (this.value.length === 0) {
+                  this.value = this.getAttribute("data-placeholder");
+                  setCaret.apply(this, arguments);
+                  this.className = "";
+                  if (this.type === "password") {
+                    this.type = "text";
+                  }
+                }
+            },
+        
+            clearPlaceholderAtSubmit = function (evt) {
+                for (var i=0, placeholder; i<l; i++) {
+                    placeholder = dataPlaceholders[i];
+                    if (placeholder.value === placeholder.getAttribute("data-placeholder")) {
+                        placeholder.value = "";
+                    }
+                }
+            };
+        
+        for (var i=0, placeholder; i<l; i++) {
+            placeholder = dataPlaceholders[i];
+            if (placeholder.value.length === 0) {
+                placeholder.value = placeholder.getAttribute("data-placeholder");
+                if (placeholder.type === "password") {
+                    placeholder.type = "text";
+                }
+            }
+            else {
+                placeholder.className = "active";
+            }
+            
+            // Apply events for placeholder handling         
+            placeholder.addEventListener("focus", setCaret, false);
+            placeholder.addEventListener("focus", setCaret, false);
+            placeholder.addEventListener("click", setCaret, false);
+            placeholder.addEventListener("keydown", clearPlaceholder, false);
+            placeholder.addEventListener("keyup", restorePlaceHolder, false);
+            placeholder.addEventListener("blur", restorePlaceHolder, false);
+            
+            // Clear all default placeholder values from the form at submit
+            placeholder.form.addEventListener("submit", clearPlaceholderAtSubmit, false);
+        }
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>
