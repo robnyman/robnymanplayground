@@ -36,12 +36,12 @@
 				<h2>Placeholder demo</h2>
 				
 				<form action="index.html" novalidate>
-                    <input type="text" name="first-name" data-placeholder="Enter first name">
-                    <input type="text" name="last-name" data-placeholder="Enter last name">
-                    <input type="tel"  name="phone-no"data-placeholder="What is your phone no?">
-                    <input type="email" name="email-address" data-placeholder="Enter your e-mail address">
-                    <input type="text" name="user-pwd" data-type="password" data-placeholder="Choose a password">
-                    <input type="text" name="user-pwd-repeat" data-type="password" data-placeholder="Repeat password">
+                    <input type="text" name="first-name" placeholder="Enter first name">
+                    <input type="text" name="last-name" placeholder="Enter last name">
+                    <input type="tel"  name="phone-no" placeholder="What is your phone no?">
+                    <input type="email" name="email-address" placeholder="Enter your e-mail address">
+                    <input type="text" name="user-pwd" data-type="password" placeholder="Choose a password">
+                    <input type="text" name="user-pwd-repeat" data-type="password" placeholder="Repeat password">
                           
                     <input type="submit" value="Send to myself">
                 </form>
@@ -55,7 +55,7 @@
 	</div>
 	
 	<script>
-        var dataPlaceholders = document.querySelectorAll("input[data-placeholder]"),
+        var dataPlaceholders = document.querySelectorAll("input[placeholder]"),
             l = dataPlaceholders.length,
             
             // Set caret at the beginning of the input
@@ -101,10 +101,13 @@
                 }
             };
         
-        for (var i=0, placeholder; i<l; i++) {
+        for (var i=0, placeholder, placeholderVal; i<l; i++) {
             placeholder = dataPlaceholders[i];
             if (placeholder.value.length === 0) {
-                placeholder.value = placeholder.getAttribute("data-placeholder");
+                placeholderVal = placeholder.getAttribute("placeholder");
+                placeholder.setAttribute("data-placeholder", placeholderVal);
+                placeholder.value = placeholderVal;
+                placeholder.removeAttribute("placeholder");
                 if (placeholder.type === "password") {
                     placeholder.type = "text";
                 }
