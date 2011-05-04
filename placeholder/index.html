@@ -70,7 +70,7 @@
             
             // Clear placeholder value at user input
             clearPlaceholder = function (evt) {
-                if (evt.keyCode !== 9) {
+                if (!evt.shiftKey && evt.keyCode !== 9) {
                   if (this.value === this.getAttribute("data-placeholder")) {
                     this.value = "";
                     this.className = "active";
