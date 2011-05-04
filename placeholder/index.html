@@ -70,7 +70,6 @@
             
             // Clear placeholder value at user input
             clearPlaceholder = function (evt) {
-                console.log(evt.keyCode);
                 if (!(evt.shiftKey && evt.keyCode === 16) && evt.keyCode !== 9) {
                     if (this.value === this.getAttribute("data-placeholder")) {
                         this.value = "";
