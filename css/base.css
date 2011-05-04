@@ -67,7 +67,6 @@ a:hover {
 html {
 	color: #000;
 	background: #555;
-	
 	background: -webkit-gradient(linear, left top, left bottom, from(#CCC), to(#555));
 	background: -webkit-linear-gradient(top, #CCC, #FFF);
 	background: -moz-linear-gradient(top, #CCC, #FFF);
