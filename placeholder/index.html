@@ -8,6 +8,11 @@
 		<script src="../js/html5.js"></script>
 	<![endif]-->
 	<style>
+	    label {
+	        display: block;
+	        font-weight: bold;
+	        margin: 0 5px 5px;
+	    }
 	    input {
 	        display: block;
 	        margin: 0 5px 20px;
@@ -36,12 +41,23 @@
 				<h2>Placeholder demo</h2>
 				
 				<form action="index.html" novalidate>
-                    <input type="text" name="first-name" placeholder="Enter first name">
-                    <input type="text" name="last-name" placeholder="Enter last name">
+				    <label for="">First name</label>
+                    <input type="text" name="first-name" placeholder="E.g. Robert">
+                    
+                    <label for="">Last name</label>
+                    <input type="text" name="last-name" placeholder="E.g. Nyman">
+                    
+                    <label for="">Phone no</label>
                     <input type="tel"  name="phone-no" placeholder="What is your phone no?">
+                    
+                    <label for="">E-mail</label>
                     <input type="email" name="email-address" placeholder="Enter your e-mail address">
+                    
+                    <label for="">Password</label>
                     <input type="text" name="user-pwd" data-type="password" placeholder="Choose a password">
-                    <input type="text" name="user-pwd-repeat" data-type="password" placeholder="Repeat password">
+                    
+                    <label for="">Repeat password</label>
+                    <input type="text" name="user-pwd-repeat" data-type="password" placeholder="Repeat your entered password">
                           
                     <input type="submit" value="Send to myself">
                 </form>
