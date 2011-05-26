@@ -119,18 +119,19 @@
         
             for (var i=0, placeholder, placeholderVal; i<l; i++) {
                 placeholder = dataPlaceholders[i];
-                if (placeholder.value.length === 0) {
                 placeholderVal = placeholder.getAttribute("placeholder");
                 placeholder.setAttribute("data-placeholder", placeholderVal);
-                placeholder.value = placeholderVal;
                 placeholder.removeAttribute("placeholder");
-                if (placeholder.type === "password") {
-                    placeholder.type = "text";
+                
+                if (placeholder.value.length === 0) {
+                    placeholder.value = placeholderVal;
+                    if (placeholder.type === "password") {
+                        placeholder.type = "text";
+                    }
                 }
-            }
-            else {
-                placeholder.className = "active";
-            }
+                else {
+                    placeholder.className = "active";
+                }
             
             // Apply events for placeholder handling         
             placeholder.addEventListener("focus", setCaret, false);
