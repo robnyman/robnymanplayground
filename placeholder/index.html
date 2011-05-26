@@ -133,17 +133,17 @@
                     placeholder.className = "active";
                 }
             
-            // Apply events for placeholder handling         
-            placeholder.addEventListener("focus", setCaret, false);
-            placeholder.addEventListener("drop", setCaret, false);
-            placeholder.addEventListener("click", setCaret, false);
-            placeholder.addEventListener("keydown", clearPlaceholder, false);
-            placeholder.addEventListener("keyup", restorePlaceHolder, false);
-            placeholder.addEventListener("blur", restorePlaceHolder, false);
+                // Apply events for placeholder handling         
+                placeholder.addEventListener("focus", setCaret, false);
+                placeholder.addEventListener("drop", setCaret, false);
+                placeholder.addEventListener("click", setCaret, false);
+                placeholder.addEventListener("keydown", clearPlaceholder, false);
+                placeholder.addEventListener("keyup", restorePlaceHolder, false);
+                placeholder.addEventListener("blur", restorePlaceHolder, false);
             
-            // Clear all default placeholder values from the form at submit
-            placeholder.form.addEventListener("submit", clearPlaceholderAtSubmit, false);
-        }
+                // Clear all default placeholder values from the form at submit
+                placeholder.form.addEventListener("submit", clearPlaceholderAtSubmit, false);
+            }
 	</script>
 	
 	<script>
