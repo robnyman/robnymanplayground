@@ -41,7 +41,7 @@
                 ctx.strokeStyle = "transparent";
                 ctx.arc(300, 100, 75, 0, Math.PI*2, false);
                 
-                // Create bottom shape of the keyhole
+                // Create bottom shape of the looking glass
                 ctx.strokeStyle = "#000";
                 ctx.lineWidth = "10";
                 ctx.moveTo(350, 50);
@@ -67,7 +67,7 @@
                 ctxNoClip.strokeStyle = "transparent";
                 ctxNoClip.arc(300, 100, 75, 0, Math.PI*2, false);
 
-                // Create bottom shape of the keyhole
+                // Create bottom shape of the looking glass
                 ctxNoClip.strokeStyle = "#000";
                 ctxNoClip.lineWidth = "10";
                 ctxNoClip.moveTo(350, 50);
@@ -76,7 +76,7 @@
                 ctxNoClip.stroke();
                 ctxNoClip.fill();
 
-                // Create rectangles that will shine through the clip
+                // Create rectangles
                 ctxNoClip.fillStyle = "#fff";
                 ctxNoClip.fillRect(200, 0, 200, 200);
                 ctxNoClip.fillStyle = "#f00";
