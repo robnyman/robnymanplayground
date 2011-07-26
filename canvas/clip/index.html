@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Canvas and clip - Robert Nyman</title>
+	<link rel="stylesheet" href="../../css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Canvas and clip method</a></h1>
+			<p>Using the clip method for canvas to only display parts of it, in a staging manner</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<canvas id="canvas-clip" width="800" height="330"></canvas>
+				
+				<h2>Below: same canvas code without clip method</h2>
+				<canvas id="canvas-no-clip" width="800" height="330"></canvas>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<script>
+        (function() {
+            var cvs = document.getElementById("canvas-clip"),
+                ctx = cvs.getContext("2d");
+                
+                // Create circle
+                ctx.strokeStyle = "transparent";
+                ctx.arc(300, 100, 75, 0, Math.PI*2, false);
+                
+                // Create bottom shape of the keyhole
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = "10";
+                ctx.moveTo(350, 50);
+                ctx.lineTo(100, 300);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.fill();
+                
+                // Clip the view of the canvas
+                ctx.clip();
+                
+                // Create rectangles that will shine through the clip
+                ctx.fillStyle = "#fff";
+                ctx.fillRect(200, 0, 200, 200);
+                ctx.fillStyle = "#f00";
+                ctx.fillRect(200, 0, 100, 100);
+                ctx.fillRect(300, 100, 100, 100);
+                
+                var cvsNoClip = document.getElementById("canvas-no-clip"),
+                    ctxNoClip = cvsNoClip.getContext("2d");
+
+                // Create circle
+                ctxNoClip.strokeStyle = "transparent";
+                ctxNoClip.arc(300, 100, 75, 0, Math.PI*2, false);
+
+                // Create bottom shape of the keyhole
+                ctxNoClip.strokeStyle = "#000";
+                ctxNoClip.lineWidth = "10";
+                ctxNoClip.moveTo(350, 50);
+                ctxNoClip.lineTo(100, 300);
+                ctxNoClip.closePath();
+                ctxNoClip.stroke();
+                ctxNoClip.fill();
+
+                // Create rectangles that will shine through the clip
+                ctxNoClip.fillStyle = "#fff";
+                ctxNoClip.fillRect(200, 0, 200, 200);
+                ctxNoClip.fillStyle = "#f00";
+                ctxNoClip.fillRect(200, 0, 100, 100);
+                ctxNoClip.fillRect(300, 100, 100, 100);    
+        })();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<div class="stats"><script src="http://www.statcounter.com/counter/counter_xhtml.js"></script></div>
+	
+	
+	
+</body>
+</html>
